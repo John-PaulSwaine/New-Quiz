@@ -2,10 +2,9 @@ import { React } from 'react'
 import './App.css'
 import { Route, Routes, Link } from 'react-router-dom'
 import Home from './pages/home'
-import Easy from './pages/easy'
-import Medium from './pages/medium'
-import Hard from './pages/hard'
-import Expert from './pages/expert'
+import EasyCyberSecurity from './pages/basicCyberSecurity'
+import MediumCyberSecurity from './pages/mediumCyberSecurity'
+import HardCyberSecurity from './pages/hardCyberSecurity'
 
 
 const App = () => {
@@ -14,18 +13,14 @@ const App = () => {
     <div id='wrapper'>
       <nav className='navBar'>
         <Link to='/' className='links'>Home</Link>
-        <Link to='/easy'>Easy</Link>
-        <Link to='medium'>Medium</Link>
-        <Link to='hard'>Hard</Link>
-        <Link to='expert'>Expert</Link>
+        <Link to='/report-a-problem' className='links'>Report a Problem</Link>
       </nav>
 
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/easy' element={<Easy />}></Route>
-        <Route path='/medium' element={<Medium />}></Route>
-        <Route path='/hard' element={<Hard />}></Route>
-        <Route path='/expert' element={<Expert />}></Route>
+        <Route path='/easy-cyber-security' element={<EasyCyberSecurity />}></Route>
+        <Route path='/medium-cyber-security' element={<MediumCyberSecurity />}></Route>
+        <Route path='/hard-cyber-security' element={<HardCyberSecurity />}></Route>
       </Routes>
     </div>
   )
