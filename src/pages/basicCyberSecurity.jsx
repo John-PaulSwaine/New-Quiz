@@ -22,8 +22,8 @@ const EasyCyberSecurity =()=>{
             <div>
                 <h5>Question 2:</h5>
                 <p>Should you use the same password for everything?</p>
-                <button>Yes. I may forget passwords otherwise.</button>
-                <button>No. I may forget but I can use a password manager.</button>
+                <button>Yes.</button>
+                <button>No.</button>
                 <p>You should absolutely not use the same password for everything. This is because if one service suffers a cyber attack and they get your log-in credentials, then the cyber criminal(s) will then be able to access other accounts you hold such as Amazon, Facbook, eBay etc. Companies such as Google have password managers which can not only store passwords for you but can also recommend strong passwords as well, which ensures that the password isn't something that relates to you and your interests such as a football fan using the name of their favourite football team like Arsenal, Liverpool or Manchester City. This could be easily guessed with a quick social media search if that same information (what football club is supported) is open on social media platforms, which often these things are.</p>
             </div>
             <div>
