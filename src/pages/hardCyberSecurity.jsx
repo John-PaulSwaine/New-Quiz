@@ -17,16 +17,16 @@ const HardCyberSecurity = () => {
 
   const handleCorrectClick = (key) => {
     const questionId = key.split('_')[0];
-    setIsCorrectClick((prev) => ({ ...prev, [key]: true }));
-    setDisabled((prev) => ({ ...prev, [questionId]: true }));
-    setAnsweredQuestions((prev) => ({ ...prev, [questionId]: true }));
+    setIsCorrectClick(prev => ({ ...prev, [key]: true }));
+    setDisabled(prev => ({ ...prev, [questionId]: true }));
+    setAnsweredQuestions(prev => ({ ...prev, [questionId]: true }));
   };
 
   const handleIncorrectClick = (key) => {
     const questionId = key.split('_')[0];
-    setIsIncorrectClicked((prev) => ({ ...prev, [key]: true }));
-    setDisabled((prev) => ({ ...prev, [questionId]: true }));
-    setAnsweredQuestions((prev) => ({ ...prev, [questionId]: true }));
+    setIsIncorrectClicked(prev => ({ ...prev, [key]: true }));
+    setDisabled(prev => ({ ...prev, [questionId]: true }));
+    setAnsweredQuestions(prev => ({ ...prev, [questionId]: true }));
   };
 
   const getButtonClass = (questionId, answerKey) => {
@@ -38,35 +38,35 @@ const HardCyberSecurity = () => {
 
   return (
     <div>
-      <h1>Hard Cyber Security Quiz</h1>
+      <h1>Hard Cybersecurity Quiz</h1>
       <h5>Rules:</h5>
-      <p>You will be asked 5 questions.</p>
-      <p>You will be given 4 potential answers, with only 1 being correct.</p>
-      <p>You only get ONE chance to answer.</p>
+      <p>You will be asked five questions.</p>
+      <p>You will be given four potential answers, with only one being correct.</p>
+      <p>You only get one chance to answer.</p>
       <br />
       
       <div>
         <h5>Question 1:</h5>
         <p>In asymmetric encryption, which key is used to decrypt data encrypted with the public key?</p>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}>The Corresponding Private Key</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}>The corresponding private key</button>
         <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1}>The same public key</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}> A shared symmetric key</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}>A shared symmetric key</button>
         <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1}>A session key</button>
       </div>
       <div>
         <h5>Question 2:</h5>
-        <p>In cryptographic terms, what is "nonce"?</p>
+        <p>In cryptographic terms, what is a "nonce"?</p>
         <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleIncorrectClick('q2_a1')} disabled={disabled.q2}>A hash function</button>
         <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleIncorrectClick('q2_a2')} disabled={disabled.q2}>A brute-force script</button>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a3')}`} onClick={() => handleCorrectClick('q2_a3')} disabled={disabled.q2}>A number once used</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a3')}`} onClick={() => handleCorrectClick('q2_a3')} disabled={disabled.q2}>A number used once</button>
         <button className={`answer-button ${getButtonClass('q2', 'q2_a4')}`} onClick={() => handleIncorrectClick('q2_a4')} disabled={disabled.q2}>A password salt</button>
       </div>
       <div>
         <h5>Question 3:</h5>
         <p>What is the key difference between asymmetric and symmetric encryption?</p>
         <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleIncorrectClick('q3_a1')} disabled={disabled.q3}>One uses tokens, the other does not</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3}>Both use same keys</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3}>Asymmetric is faster</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3}>Both use the same keys</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3}>Asymmetric encryption is faster</button>
         <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleCorrectClick('q3_a4')} disabled={disabled.q3}>Symmetric uses one key while asymmetric uses key pairs</button>
       </div>
       <div>
@@ -80,7 +80,7 @@ const HardCyberSecurity = () => {
       <div>
         <h5>Question 5:</h5>
         <p>In digital certificates, what does the CA (Certificate Authority) do?</p>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5}>Encrypts Emails</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5}>Encrypts emails</button>
         <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleCorrectClick('q5_a2')} disabled={disabled.q5}>Verifies and signs digital certificates</button>
         <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleIncorrectClick('q5_a3')} disabled={disabled.q5}>Creates TLS handshakes</button>
         <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5}>Issues VPN keys</button>

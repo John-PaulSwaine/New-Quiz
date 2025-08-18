@@ -38,51 +38,55 @@ const EasyCyberSecurity = () => {
 
   return (
     <div>
-      <h1>Easy Cyber Security Quiz</h1>
+      <h1>Easy Cybersecurity Quiz</h1>
       <h5>Rules:</h5>
-      <p>You will be asked 5 questions.</p>
-      <p>You will be given up to 4 potential answers, with only 1 being correct.</p>
-      <p>You only get ONE chance to answer.</p>
+      <p>You will be asked five questions.</p>
+      <p>You will be given up to four potential answers, with only one being correct.</p>
+      <p>You only get one chance to answer.</p>
       <br />
 
-        <div>
-            <h5>Question 1:</h5>
-            <p>What is cyber security?</p>
-            <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}>The protection of all things within the digital world, including, but not limited to computers, smartphones and networks.</button>
-            <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1}>Protecting a service user's information.</button>
-            <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}>The process of testing for weaknesses.</button>
-            <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1}>Developing a new piece of software for use across the business.</button>
-        </div>
-        <div>
-            <h5>Question 2:</h5>
-            <p>Should you use the same password for everything?</p>
-            <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleIncorrectClick('q2_a1')} disabled={disabled.q2}>Yes.</button>
-            <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleCorrectClick('q2_a2')} disabled={disabled.q2}>No.</button>
-        </div>
-        <div>
-            <h5>Question 3:</h5>
-            <p>Why shouldn't you download from untrusted sources?</p>
-            <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleCorrectClick('q3_a1')} disabled={disabled.q3}>The download may contain malware including viruses or spyware.</button>
-            <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3}>What do you mean I shouldn't?</button>
-            <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3}>Because doing so may prevent a company, such as McAfee from taking money for the same service.</button>
-            <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3}>There is no such thing as untrusted sources.</button>
-        </div>
-        <div>
-            <h5>Question 4:</h5>
-            <p>In Cyber Security terms, what is a firewall?</p>
-            <button className={`answer-button ${getButtonClass('q4', 'q4_a1')}`} onClick={() => handleIncorrectClick('q4_a1')} disabled={disabled.q4}>A literal wall of fire</button>
-            <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleCorrectClick('q4_a2')} disabled={disabled.q4}>A piece of software to regulate traffic on a network and/or system to aid in protecting against unauthorised access.</button>
-            <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4}>A method of security designed by Leonardo Da Vinci</button>
-            <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4}>A method of hunting for vulnerabilities and bugs.</button>
-        </div>
-        <div>
-            <h5>Question 5:</h5>
-            <p>What does VPN stand for?</p>
-            <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5}>Visual Public Nuisance</button>
-            <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5}>Virtual Portfolio Notification</button>
-            <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleCorrectClick('q5_a3')} disabled={disabled.q5}>Virtual Private Network</button>
-            <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5}>Virtual Public Network</button>
-        </div>
+      <div>
+        <h5>Question 1:</h5>
+        <p>What is cybersecurity?</p>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}>The protection of all things within the digital world, including, but not limited to, computers, smartphones and networks.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1}>Protecting a service user's information.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}>The process of testing for weaknesses.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1}>Developing a new piece of software for use across the business.</button>
+      </div>
+
+      <div>
+        <h5>Question 2:</h5>
+        <p>Should you use the same password for everything?</p>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleIncorrectClick('q2_a1')} disabled={disabled.q2}>Yes.</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleCorrectClick('q2_a2')} disabled={disabled.q2}>No.</button>
+      </div>
+
+      <div>
+        <h5>Question 3:</h5>
+        <p>Why shouldn't you download from untrusted sources?</p>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleCorrectClick('q3_a1')} disabled={disabled.q3}>The download may contain malware, including viruses or spyware.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3}>Untrusted sources usually have faster downloads.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3}>Because doing so may prevent a company, such as McAfee, from taking money for the same service.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3}>There is no such thing as untrusted sources.</button>
+      </div>
+
+      <div>
+        <h5>Question 4:</h5>
+        <p>In cyber security terms, what is a firewall?</p>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a1')}`} onClick={() => handleIncorrectClick('q4_a1')} disabled={disabled.q4}>A literal wall of fire.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleCorrectClick('q4_a2')} disabled={disabled.q4}>A piece of software to regulate traffic on a network and/or system to aid in protecting against unauthorised access.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4}>A software program that deletes viruses automatically.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4}>A method of hunting for vulnerabilities and bugs.</button>
+      </div>
+
+      <div>
+        <h5>Question 5:</h5>
+        <p>What does VPN stand for?</p>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5}>Visual Public Nuisance</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5}>Virtual Portfolio Notification</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleCorrectClick('q5_a3')} disabled={disabled.q5}>Virtual Private Network</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5}>Virtual Public Network</button>
+      </div>
     </div>
   );
 };

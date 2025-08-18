@@ -1,13 +1,14 @@
-import '../App.css'
+import '../App.css';
 
-const ReportProblem =()=>{
-    return (
-        <div>
-            <h1>Got a problem?</h1>
-            <p>Please contact at the email below to report any problems with accessing or navigating the website:</p>
-            <br />
-            <p>swainejohn477@gmail.com</p>
-        </div>
-    )
-}
-export default ReportProblem
+const ReportProblem = () => {
+  return (
+    <div>
+      <h1>Got a problem?</h1>
+      <p>Please contact us at the email below to report any issues with accessing or navigating the website:</p>
+      <br />
+      <p><a href="mailto:swainejohn477@gmail.com">swainejohn477@gmail.com</a></p>
+    </div>
+  );
+};
+
+export default ReportProblem;
