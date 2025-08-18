@@ -8,6 +8,7 @@ const HardCyberSecurity = () => {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
   const [timeLeft, setTimeLeft] = useState(300);
   const [timeExpired, setTimeExpired] = useState(false);
+  const [score, setScore] = useState(0); // <-- Added score state
 
   const correctAnswers = {
     q1: 'q1_a2',
@@ -47,6 +48,7 @@ const HardCyberSecurity = () => {
     setIsCorrectClick(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
     setAnsweredQuestions(prev => ({ ...prev, [questionId]: true }));
+    setScore(prev => prev + 1);  // <-- Increment score on correct answer
   };
 
   const handleIncorrectClick = (key) => {
@@ -134,6 +136,14 @@ const HardCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5 || timeExpired}>A method for stealing credentials.</button>
         {renderExplanation('q5')}
       </div>
+
+      {/* Show score when quiz ends */}
+      {timeExpired && (
+        <div style={{ marginTop: '20px', fontWeight: 'bold' }}>
+          <h3>Quiz Complete!</h3>
+          <p>Your Score: {score} / 5</p>
+        </div>
+      )}
     </div>
   );
 };

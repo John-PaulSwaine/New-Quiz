@@ -6,8 +6,9 @@ const EasyCyberSecurity = () => {
   const [isIncorrectClicked, setIsIncorrectClicked] = useState({});
   const [disabled, setDisabled] = useState({});
   const [answeredQuestions, setAnsweredQuestions] = useState({});
-  const [timeLeft, setTimeLeft] = useState(120); 
+  const [timeLeft, setTimeLeft] = useState(120);
   const [timeExpired, setTimeExpired] = useState(false);
+  const [score, setScore] = useState(0); // ✅ New state for score
 
   const correctAnswers = {
     q1: 'q1_a1',
@@ -26,7 +27,6 @@ const EasyCyberSecurity = () => {
   };
 
   useEffect(() => {
-    // Check if all questions are answered
     const allAnswered = ['q1', 'q2', 'q3', 'q4', 'q5'].every(q => answeredQuestions[q]);
 
     if (timeLeft <= 0 || allAnswered) {
@@ -43,15 +43,16 @@ const EasyCyberSecurity = () => {
   }, [timeLeft, answeredQuestions]);
 
   const handleCorrectClick = (key) => {
-    if (timeExpired) return; 
+    if (timeExpired) return;
     const questionId = key.split('_')[0];
     setIsCorrectClick(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
     setAnsweredQuestions(prev => ({ ...prev, [questionId]: true }));
+    setScore(prev => prev + 1); // ✅ Increment score
   };
 
   const handleIncorrectClick = (key) => {
-    if (timeExpired) return; 
+    if (timeExpired) return;
     const questionId = key.split('_')[0];
     setIsIncorrectClicked(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
@@ -86,6 +87,7 @@ const EasyCyberSecurity = () => {
       {timeExpired && <p style={{ color: 'red', fontWeight: 'bold' }}>Time's up! You can no longer answer questions.</p>}
       <br />
 
+      {/* Questions */}
       <div>
         <h5>Question 1:</h5>
         <p>What is cybersecurity?</p>
@@ -133,6 +135,12 @@ const EasyCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5 || timeExpired}>Virtual Public Network</button>
         {renderExplanation('q5')}
       </div>
+      {timeExpired && (
+        <div style={{ marginTop: '20px', fontWeight: 'bold' }}>
+          <h3>Quiz Complete!</h3>
+          <p>Your Score: {score} / 5</p>
+        </div>
+      )}
     </div>
   );
 };

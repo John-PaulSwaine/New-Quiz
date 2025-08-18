@@ -8,6 +8,7 @@ const MediumCyberSecurity = () => {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
   const [timeLeft, setTimeLeft] = useState(240);
   const [timeExpired, setTimeExpired] = useState(false);
+  const [score, setScore] = useState(0); // ✅ New score state
 
   const correctAnswers = {
     q1: 'q1_a3',
@@ -47,6 +48,7 @@ const MediumCyberSecurity = () => {
     setIsCorrectClick(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
     setAnsweredQuestions(prev => ({ ...prev, [questionId]: true }));
+    setScore(prev => prev + 1); // ✅ Increment score
   };
 
   const handleIncorrectClick = (key) => {
@@ -85,6 +87,7 @@ const MediumCyberSecurity = () => {
       {timeExpired && <p style={{ color: 'red', fontWeight: 'bold' }}>Time's up! You can no longer answer questions.</p>}
       <br />
 
+      {/* Questions */}
       <div>
         <h5>Question 1:</h5>
         <p>What is a DDoS attack?</p>
@@ -134,6 +137,14 @@ const MediumCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5 || timeExpired}>Copies data to multiple locations.</button>
         {renderExplanation('q5')}
       </div>
+
+      {/* ✅ Score display */}
+      {timeExpired && (
+        <div style={{ marginTop: '20px', fontWeight: 'bold' }}>
+          <h3>Quiz Complete!</h3>
+          <p>Your Score: {score} / 5</p>
+        </div>
+      )}
     </div>
   );
 };
