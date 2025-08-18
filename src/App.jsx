@@ -6,7 +6,7 @@ import EasyCyberSecurity from './pages/basicCyberSecurity'
 import MediumCyberSecurity from './pages/mediumCyberSecurity'
 import HardCyberSecurity from './pages/hardCyberSecurity'
 import ReportProblem from './pages/reportAProblem'
-import Logo from './assets//images/NewLogo4.png'
+import Logo from './assets//images/NewLogo6.png'
 import ComingSoon from './pages/comingSoon'
 
 
