@@ -8,7 +8,7 @@ const EasyCyberSecurity = () => {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
   const [timeLeft, setTimeLeft] = useState(120);
   const [timeExpired, setTimeExpired] = useState(false);
-  const [score, setScore] = useState(0); // ✅ New state for score
+  const [score, setScore] = useState(0); 
 
   const correctAnswers = {
     q1: 'q1_a1',
@@ -48,7 +48,7 @@ const EasyCyberSecurity = () => {
     setIsCorrectClick(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
     setAnsweredQuestions(prev => ({ ...prev, [questionId]: true }));
-    setScore(prev => prev + 1); // ✅ Increment score
+    setScore(prev => prev + 1); 
   };
 
   const handleIncorrectClick = (key) => {
@@ -86,8 +86,6 @@ const EasyCyberSecurity = () => {
       </div>
       {timeExpired && <p style={{ color: 'red', fontWeight: 'bold' }}>Time's up! You can no longer answer questions.</p>}
       <br />
-
-      {/* Questions */}
       <div>
         <h5>Question 1:</h5>
         <p>What is cybersecurity?</p>
@@ -97,7 +95,6 @@ const EasyCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1 || timeExpired}>Developing a new piece of software for use across the business.</button>
         {renderExplanation('q1')}
       </div>
-
       <div>
         <h5>Question 2:</h5>
         <p>Should you use the same password for everything?</p>
@@ -105,7 +102,6 @@ const EasyCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleCorrectClick('q2_a2')} disabled={disabled.q2 || timeExpired}>No.</button>
         {renderExplanation('q2')}
       </div>
-
       <div>
         <h5>Question 3:</h5>
         <p>Why shouldn't you download from untrusted sources?</p>
@@ -115,7 +111,6 @@ const EasyCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3 || timeExpired}>There is no such thing as untrusted sources.</button>
         {renderExplanation('q3')}
       </div>
-
       <div>
         <h5>Question 4:</h5>
         <p>In cyber security terms, what is a firewall?</p>
@@ -125,7 +120,6 @@ const EasyCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4 || timeExpired}>A method of hunting for vulnerabilities and bugs.</button>
         {renderExplanation('q4')}
       </div>
-
       <div>
         <h5>Question 5:</h5>
         <p>What does VPN stand for?</p>
