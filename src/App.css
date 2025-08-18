@@ -82,3 +82,31 @@ button:disabled {
     outline: 3px solid #ffd166;
     outline-offset: 2px;
 }
+#homeImage {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#motherboard {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.reference {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 5px;
+}
+.error {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+.success-message {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+  
