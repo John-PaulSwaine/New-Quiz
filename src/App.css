@@ -113,3 +113,8 @@ button:disabled {
     max-width: 10vw;
     max-height: 10vh;
 } 
+.explanation-text {
+    margin-top: 10px;
+    font-style: italic;
+    color: #333;
+}

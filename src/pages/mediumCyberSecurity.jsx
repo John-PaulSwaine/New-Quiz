@@ -15,6 +15,14 @@ const MediumCyberSecurity = () => {
     q5: 'q5_a4',
   };
 
+  const explanations = {
+    q1: "White-hat hackers have permission to test systems and report vulnerabilities. Grey-hat hackers lack permission but usually don't have malicious intent.",
+    q2: "A man-in-the-middle attack involves an attacker secretly intercepting and possibly altering communication between two parties.",
+    q3: "Security questions are not considered strong MFA because their answers can often be guessed or found online.",
+    q4: "A vulnerability scanner is a tool used to identify security weaknesses within a system or network.",
+    q5: "The principle of least privilege ensures users only have the access necessary to perform their tasks — nothing more.",
+  };
+
   const handleCorrectClick = (key) => {
     const questionId = key.split('_')[0];
     setIsCorrectClick(prev => ({ ...prev, [key]: true }));
@@ -36,6 +44,13 @@ const MediumCyberSecurity = () => {
     return '';
   };
 
+  const renderExplanation = (questionId) => {
+    if (answeredQuestions[questionId]) {
+      return <p className="explanation-text"><em>{explanations[questionId]}</em></p>;
+    }
+    return null;
+  };
+
   return (
     <div>
       <h1>Medium Cybersecurity Quiz</h1>
@@ -46,22 +61,14 @@ const MediumCyberSecurity = () => {
         <p>You only get one chance to answer.</p>
       </div>
       <br />
-      
       <div>
         <h5>Question 1:</h5>
         <p>What is the key difference between a white-hat and a grey-hat hacker?</p>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}>
-          A white-hat hacker is authorised to test a system's or network's security and reports their findings. A grey-hat hacker does not have authority nor malicious intent and will often sell their findings to the company.
-        </button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1}>
-          A white-hat hacker wears a white hat, while a grey-hat hacker favours grey hats.
-        </button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}>
-          White-hat hackers work alone whereas grey-hat hackers work as part of an organised criminal enterprise.
-        </button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1}>
-          White-hat hackers only use hardware to hack whilst grey-hat hackers only use software.
-        </button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}> A white-hat hacker is authorised to test a system's or network's security and reports their findings. A grey-hat hacker does not have authority nor malicious intent and will often sell their findings to the company.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1}> A white-hat hacker wears a white hat, while a grey-hat hacker favours grey hats.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}> White-hat hackers work alone whereas grey-hat hackers work as part of an organised criminal enterprise.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1}> White-hat hackers only use hardware to hack whilst grey-hat hackers only use software.</button>
+        {renderExplanation('q1')}
       </div>
       <div>
         <h5>Question 2:</h5>
@@ -70,6 +77,7 @@ const MediumCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleIncorrectClick('q2_a2')} disabled={disabled.q2}>Phishing attack</button>
         <button className={`answer-button ${getButtonClass('q2', 'q2_a3')}`} onClick={() => handleIncorrectClick('q2_a3')} disabled={disabled.q2}>Whaling attack</button>
         <button className={`answer-button ${getButtonClass('q2', 'q2_a4')}`} onClick={() => handleCorrectClick('q2_a4')} disabled={disabled.q2}>Man-in-the-middle attack</button>
+        {renderExplanation('q2')}
       </div>
       <div>
         <h5>Question 3:</h5>
@@ -78,6 +86,7 @@ const MediumCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleCorrectClick('q3_a2')} disabled={disabled.q3}>Security questions</button>
         <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3}>Authenticator app</button>
         <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3}>Biometric scan</button>
+        {renderExplanation('q3')}
       </div>
       <div>
         <h5>Question 4:</h5>
@@ -86,6 +95,7 @@ const MediumCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleIncorrectClick('q4_a2')} disabled={disabled.q4}>To identify lost data.</button>
         <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4}>To encrypt sensitive files on a network.</button>
         <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4}>To block unauthorised access.</button>
+        {renderExplanation('q4')}
       </div>
       <div>
         <h5>Question 5:</h5>
@@ -94,6 +104,7 @@ const MediumCyberSecurity = () => {
         <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5}>Allowing temporary privilege to guests.</button>
         <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleIncorrectClick('q5_a3')} disabled={disabled.q5}>Giving all privileges to a specific role.</button>
         <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleCorrectClick('q5_a4')} disabled={disabled.q5}>Giving users the minimum access necessary to complete their task(s).</button>
+        {renderExplanation('q5')}
       </div>
     </div>
   );
