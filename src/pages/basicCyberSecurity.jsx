@@ -26,7 +26,10 @@ const EasyCyberSecurity = () => {
   };
 
   useEffect(() => {
-    if (timeLeft <= 0) {
+    // Check if all questions are answered
+    const allAnswered = ['q1', 'q2', 'q3', 'q4', 'q5'].every(q => answeredQuestions[q]);
+
+    if (timeLeft <= 0 || allAnswered) {
       setTimeExpired(true);
       setDisabled({ q1: true, q2: true, q3: true, q4: true, q5: true });
       return;
@@ -37,7 +40,7 @@ const EasyCyberSecurity = () => {
     }, 1000);
 
     return () => clearInterval(timerId);
-  }, [timeLeft]);
+  }, [timeLeft, answeredQuestions]);
 
   const handleCorrectClick = (key) => {
     if (timeExpired) return; 

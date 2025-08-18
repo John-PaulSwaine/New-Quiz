@@ -10,23 +10,25 @@ const MediumCyberSecurity = () => {
   const [timeExpired, setTimeExpired] = useState(false);
 
   const correctAnswers = {
-    q1: 'q1_a1',
-    q2: 'q2_a4',
-    q3: 'q3_a2',
-    q4: 'q4_a1',
-    q5: 'q5_a4',
+    q1: 'q1_a3',
+    q2: 'q2_a1',
+    q3: 'q3_a4',
+    q4: 'q4_a2',
+    q5: 'q5_a3',
   };
 
   const explanations = {
-    q1: "White-hat hackers have permission to test systems and report vulnerabilities. Grey-hat hackers lack permission but usually don't have malicious intent.",
-    q2: "A man-in-the-middle attack involves an attacker secretly intercepting and possibly altering communication between two parties.",
-    q3: "Security questions are not considered strong MFA because their answers can often be guessed or found online.",
-    q4: "A vulnerability scanner is a tool used to identify security weaknesses within a system or network.",
-    q5: "The principle of least privilege ensures users only have the access necessary to perform their tasks — nothing more.",
+    q1: "A DDoS attack floods a system with traffic, overwhelming it and causing it to crash or become unavailable.",
+    q2: "Phishing attempts to trick users into giving up sensitive info like passwords by pretending to be trustworthy.",
+    q3: "Multi-factor authentication adds an extra security layer, requiring multiple forms of ID to access an account.",
+    q4: "A firewall blocks unauthorized access to a network by filtering traffic based on set rules.",
+    q5: "Encryption converts data into a code to prevent unauthorized access during transmission.",
   };
 
   useEffect(() => {
-    if (timeLeft <= 0) {
+    const allAnswered = ['q1', 'q2', 'q3', 'q4', 'q5'].every(q => answeredQuestions[q]);
+
+    if (timeLeft <= 0 || allAnswered) {
       setTimeExpired(true);
       setDisabled({ q1: true, q2: true, q3: true, q4: true, q5: true });
       return;
@@ -37,7 +39,7 @@ const MediumCyberSecurity = () => {
     }, 1000);
 
     return () => clearInterval(timerId);
-  }, [timeLeft]);
+  }, [timeLeft, answeredQuestions]);
 
   const handleCorrectClick = (key) => {
     if (timeExpired) return;
@@ -72,64 +74,64 @@ const MediumCyberSecurity = () => {
   return (
     <div>
       <h1>Medium Cybersecurity Quiz</h1>
-      <div>
-        <h5>Rules:</h5>
-        <p>You will be asked five questions.</p>
-        <p>You will be given four potential answers, with only one being correct.</p>
-        <p>You only get one chance to answer.</p>
-      </div>
+      <h5>Rules:</h5>
+      <p>You will be asked five questions.</p>
+      <p>You will be given up to four potential answers, with only one being correct.</p>
+      <p>You only get one chance to answer.</p>
       <br />
-      <div><strong>Time left: {timeLeft} second{timeLeft !== 1 ? 's' : ''}</strong></div>
+      <div>
+        <strong>Time left: {timeLeft} second{timeLeft !== 1 ? 's' : ''}</strong>
+      </div>
       {timeExpired && <p style={{ color: 'red', fontWeight: 'bold' }}>Time's up! You can no longer answer questions.</p>}
       <br />
-      
+
       <div>
         <h5>Question 1:</h5>
-        <p>What is the key difference between a white-hat and a grey-hat hacker?</p>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1 || timeExpired}>A white-hat hacker is authorised to test a system's or network's security and reports their findings. A grey-hat hacker does not have authority nor malicious intent and will often sell their findings to the company.</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1 || timeExpired}>A white-hat hacker wears a white hat, while a grey-hat hacker favours grey hats.</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1 || timeExpired}>White-hat hackers work alone whereas grey-hat hackers work as part of an organised criminal enterprise.</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1 || timeExpired}>White-hat hackers only use hardware to hack whilst grey-hat hackers only use software.</button>
+        <p>What is a DDoS attack?</p>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleIncorrectClick('q1_a1')} disabled={disabled.q1 || timeExpired}>An attack that steals data.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1 || timeExpired}>An attack that installs malware.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleCorrectClick('q1_a3')} disabled={disabled.q1 || timeExpired}>An attack that overwhelms a system with traffic.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1 || timeExpired}>An attack that breaks passwords.</button>
         {renderExplanation('q1')}
       </div>
 
       <div>
         <h5>Question 2:</h5>
-        <p>What is the name of the attack type where a cybercriminal intercepts and potentially alters the contents of a message sent electronically, such as email or SMS?</p>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleIncorrectClick('q2_a1')} disabled={disabled.q2 || timeExpired}>DDoS attack</button>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleIncorrectClick('q2_a2')} disabled={disabled.q2 || timeExpired}>Phishing attack</button>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a3')}`} onClick={() => handleIncorrectClick('q2_a3')} disabled={disabled.q2 || timeExpired}>Whaling attack</button>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a4')}`} onClick={() => handleCorrectClick('q2_a4')} disabled={disabled.q2 || timeExpired}>Man-in-the-middle attack</button>
+        <p>What is phishing?</p>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleCorrectClick('q2_a1')} disabled={disabled.q2 || timeExpired}>A scam to steal sensitive info via fake emails or sites.</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleIncorrectClick('q2_a2')} disabled={disabled.q2 || timeExpired}>A type of firewall software.</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a3')}`} onClick={() => handleIncorrectClick('q2_a3')} disabled={disabled.q2 || timeExpired}>A method of encrypting data.</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a4')}`} onClick={() => handleIncorrectClick('q2_a4')} disabled={disabled.q2 || timeExpired}>A virus that deletes files.</button>
         {renderExplanation('q2')}
       </div>
 
       <div>
         <h5>Question 3:</h5>
-        <p>Which of these is not considered a method of multi-factor authentication (MFA)?</p>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleIncorrectClick('q3_a1')} disabled={disabled.q3 || timeExpired}>SMS code</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleCorrectClick('q3_a2')} disabled={disabled.q3 || timeExpired}>Security questions</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3 || timeExpired}>Authenticator app</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3 || timeExpired}>Biometric scan</button>
+        <p>What is multi-factor authentication?</p>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleIncorrectClick('q3_a1')} disabled={disabled.q3 || timeExpired}>Using a single password only.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3 || timeExpired}>Using biometrics alone.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3 || timeExpired}>Using a firewall to secure accounts.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleCorrectClick('q3_a4')} disabled={disabled.q3 || timeExpired}>Using two or more verification methods to access an account.</button>
         {renderExplanation('q3')}
       </div>
 
       <div>
         <h5>Question 4:</h5>
-        <p>What is the function of a vulnerability scanner?</p>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a1')}`} onClick={() => handleCorrectClick('q4_a1')} disabled={disabled.q4 || timeExpired}>To identify weaknesses within a system.</button>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleIncorrectClick('q4_a2')} disabled={disabled.q4 || timeExpired}>To identify lost data.</button>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4 || timeExpired}>To encrypt sensitive files on a network.</button>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4 || timeExpired}>To block unauthorised access.</button>
+        <p>What is the purpose of a firewall?</p>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a1')}`} onClick={() => handleIncorrectClick('q4_a1')} disabled={disabled.q4 || timeExpired}>To delete viruses from a system.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleCorrectClick('q4_a2')} disabled={disabled.q4 || timeExpired}>To block unauthorized access to a network.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4 || timeExpired}>To encrypt all files on a device.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4 || timeExpired}>To scan for phishing emails.</button>
         {renderExplanation('q4')}
       </div>
 
       <div>
         <h5>Question 5:</h5>
-        <p>What does the principle of 'least privilege' entail?</p>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5 || timeExpired}>Giving administrative access to all users.</button>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5 || timeExpired}>Allowing temporary privilege to guests.</button>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleIncorrectClick('q5_a3')} disabled={disabled.q5 || timeExpired}>Giving all privileges to a specific role.</button>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleCorrectClick('q5_a4')} disabled={disabled.q5 || timeExpired}>Giving users the minimum access necessary to complete their task(s).</button>
+        <p>What does encryption do?</p>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5 || timeExpired}>Deletes data after use.</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5 || timeExpired}>Sends data without any protection.</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleCorrectClick('q5_a3')} disabled={disabled.q5 || timeExpired}>Converts data into a code to protect it during transmission.</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5 || timeExpired}>Copies data to multiple locations.</button>
         {renderExplanation('q5')}
       </div>
     </div>
