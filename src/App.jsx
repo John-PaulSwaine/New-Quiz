@@ -5,6 +5,7 @@ import Home from './pages/home'
 import EasyCyberSecurity from './pages/basicCyberSecurity'
 import MediumCyberSecurity from './pages/mediumCyberSecurity'
 import HardCyberSecurity from './pages/hardCyberSecurity'
+import ReportProblem from './pages/reportAProblem'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/easy-cyber-security' element={<EasyCyberSecurity />}></Route>
         <Route path='/medium-cyber-security' element={<MediumCyberSecurity />}></Route>
         <Route path='/hard-cyber-security' element={<HardCyberSecurity />}></Route>
+        <Route path='/report-a-problem' element={<ReportProblem />}></Route>
       </Routes>
     </div>
   )

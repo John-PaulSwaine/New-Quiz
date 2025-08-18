@@ -1,14 +1,12 @@
-//      This file will contain the functions needed for the functionality of my quiz. 
-
-export const handleCorrect = (questionId, setCorrectClick, setIncorrectClick, setInfoClass, setDisabled) => {
-    setCorrectClick((prev) => ({ ...prev, [questionId]: true }));
-    setIncorrectClick((prev) => ({ ...prev, [questionId]: false }));
-    setInfoClass((prev) => ({ ...prev, [questionId]: 'show' }));
-    setDisabled((prev) => ({ ...prev, [questionId]: true }));
-};
-
-export const handleIncorrect = (questionId, setIncorrectClick, setInfoClass, setDisabled) => {
-    setIncorrectClick((prev) => ({ ...prev, [questionId]: true }));
-    setInfoClass((prev) => ({ ...prev, [questionId]: 'show' }));
-    setDisabled((prev) => ({ ...prev, [questionId]: true }));
-};
+export const handleCorrect = (key, setIsCorrectClick, setIsIncorrectClicked, _setInfoClass, setDisabled) => {
+    setIsCorrectClick(prev => ({ ...prev, [key]: true }));
+    const questionId = key.split('_')[0];  // gets 'q1' from 'q1_a1'
+    setDisabled(prev => ({ ...prev, [questionId]: true }));
+  };
+  
+  export const handleIncorrect = (key, setIsIncorrectClicked, _setInfoClass, setDisabled) => {
+    setIsIncorrectClicked(prev => ({ ...prev, [key]: true }));
+    const questionId = key.split('_')[0];
+    setDisabled(prev => ({ ...prev, [questionId]: true }));
+  };
+  
