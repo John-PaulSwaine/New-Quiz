@@ -70,6 +70,8 @@ const ReportProblem = () => {
       </form>
       <br />
       <p>If you prefer, you can also email us directly at: <a href="mailto:swainejohn477@gmail.com">swainejohn477@gmail.com</a></p>
+      <br />
+      <p id='disclaimer'>Please note, our contact form is currently unavailable. Please direct your email to the email address provided with details of your issue. Thank you.</p>
     </div>
   );
 };
