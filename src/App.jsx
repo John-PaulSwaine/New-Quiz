@@ -16,6 +16,9 @@ const App = () => {
     <div id='wrapper'>
       <nav className='navBar'>
         <Link to='/' className='links'>Home</Link>
+        <Link to='/easy-cyber-security' className='links'>Easy</Link>
+        <Link to='/medium-cyber-security' className='links'>Medium</Link>
+        <Link to='/hard-cyber-security' className='links'>Hard</Link>
         <Link to='/report-a-problem' className='links'>Report a Problem</Link>
         <Link to='/coming-soon' className='links'>Coming Soon</Link>
         <img src={Logo} alt='Logo' id='logo'/>
