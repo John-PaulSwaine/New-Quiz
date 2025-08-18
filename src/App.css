@@ -1,24 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf6e3;
+    color: #36454F;
+    margin: 20px;
+    padding: 0;
+}
+h1, h5 {
+    color: #1C1C1C;
+}
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+div {
+    margin-bottom: 40px;
+}
 .answer-button {
-    margin: 6px;
-    padding: 6px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: left;
+    border-radius: 5px;
     border: 1px solid black;
-    transition: background-color 0.2s ease;
-    display: inline-block;    
-    max-width: 100%;  
-    text-align: left;        
-}  
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+.answer-button:hover:not(:disabled) {
+    background-color: #e6e6e6;
+}
 .correct-button-clicked {
-    background-color: #4caf50;
-    color: white;
+    background-color: #2E8B57 !important;
+    border: 2px solid #1e5f3f;
+    color: #fff;
+    font-weight: bold;
 }
 .incorrect-button-clicked {
-    background-color: #f44336;
-    color: white;
+    background-color: #D9534F !important;
+    border: 2px solid #a94442;
+    color: #fff;
+    font-weight: bold;
 }
 button:disabled {
-    cursor: not-allowed;
     opacity: 0.6;
+    cursor: not-allowed;
+}
+@media (max-width: 768px) {
+    .answer-button {
+      font-size: 14px;
+      padding: 10px;
+    }
+}  
+.navBar {
+    background-color: #36454F; 
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+}
+.navBar a {
+    color: #f5f7fa; 
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+.navBar a:hover, .navBar a:focus {
+    color: #a0c4ff; 
+    border-bottom: 2px solid #a0c4ff; 
+    outline: none; 
+}
+.navBar a:focus-visible {
+    outline: 3px solid #ffd166;
+    outline-offset: 2px;
 }

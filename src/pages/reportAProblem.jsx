@@ -4,7 +4,7 @@ const ReportProblem =()=>{
     return (
         <div>
             <h1>Got a problem?</h1>
-            <p>please contact at the email below to report any problems with accessing or navigating the website:</p>
+            <p>Please contact at the email below to report any problems with accessing or navigating the website:</p>
             <br />
             <p>swainejohn477@gmail.com</p>
         </div>

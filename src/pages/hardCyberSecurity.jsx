@@ -43,9 +43,8 @@ const HardCyberSecurity = () => {
       <p>You will be asked 5 questions.</p>
       <p>You will be given 4 potential answers, with only 1 being correct.</p>
       <p>You only get ONE chance to answer.</p>
-      <br /><br /><br />
-      <p>Here will contain hard cyber security questions. Each question will have 4 options with only 1 correct answer.</p>
-
+      <br />
+      
       <div>
         <h5>Question 1:</h5>
         <p>In asymmetric encryption, which key is used to decrypt data encrypted with the public key?</p>

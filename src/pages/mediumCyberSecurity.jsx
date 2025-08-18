@@ -45,7 +45,8 @@ const MediumCyberSecurity = () => {
         <p>You will be given 4 potential answers, with only 1 being correct.</p>
         <p>You only get ONE chance to answer.</p>
       </div>
-      <br /><br /><br />
+      <br />
+      
       <div>
         <h5>Question 1:</h5>
         <p>What is the key difference between a White-Hat and a Grey-Hat hacker?</p>
