@@ -6,6 +6,7 @@ import EasyCyberSecurity from './pages/basicCyberSecurity'
 import MediumCyberSecurity from './pages/mediumCyberSecurity'
 import HardCyberSecurity from './pages/hardCyberSecurity'
 import ReportProblem from './pages/reportAProblem'
+import Logo from './assets//images/NewLogo4.png'
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <nav className='navBar'>
         <Link to='/' className='links'>Home</Link>
         <Link to='/report-a-problem' className='links'>Report a Problem</Link>
+        <img src={Logo} alt='Logo' id='logo'/>
       </nav>
 
       <Routes>

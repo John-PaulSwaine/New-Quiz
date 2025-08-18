@@ -4,7 +4,7 @@ import Image from '../assets/images/motherboard.jpg';
 const Home = () => {
   return (
     <div>
-      <h1>John-Paul's Cyber Security Quizzes</h1>
+      <h1>John-Paul's Cybersecurity Quizzes</h1>
       <p>Hello and welcome, one and all, to my collection of cyber security quizzes. These will have various difficulties.</p>
       <a href="/easy-cyber-security"><button id="easy">Easy</button></a>
       <a href="/medium-cyber-security"><button id="medium">Medium</button></a>

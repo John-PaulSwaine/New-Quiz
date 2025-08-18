@@ -109,4 +109,7 @@ button:disabled {
     font-weight: bold;
     margin-bottom: 15px;
 }
-  
+#logo {
+    max-width: 10vw;
+    max-height: 10vh;
+} 
