@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 
 const EasyCyberSecurity = () => {
@@ -6,6 +6,8 @@ const EasyCyberSecurity = () => {
   const [isIncorrectClicked, setIsIncorrectClicked] = useState({});
   const [disabled, setDisabled] = useState({});
   const [answeredQuestions, setAnsweredQuestions] = useState({});
+  const [timeLeft, setTimeLeft] = useState(120); 
+  const [timeExpired, setTimeExpired] = useState(false);
 
   const correctAnswers = {
     q1: 'q1_a1',
@@ -23,7 +25,22 @@ const EasyCyberSecurity = () => {
     q5: "VPN stands for Virtual Private Network — it encrypts your internet connection to secure your data and privacy.",
   };
 
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setTimeExpired(true);
+      setDisabled({ q1: true, q2: true, q3: true, q4: true, q5: true });
+      return;
+    }
+
+    const timerId = setInterval(() => {
+      setTimeLeft(prev => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
+
   const handleCorrectClick = (key) => {
+    if (timeExpired) return; 
     const questionId = key.split('_')[0];
     setIsCorrectClick(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
@@ -31,6 +48,7 @@ const EasyCyberSecurity = () => {
   };
 
   const handleIncorrectClick = (key) => {
+    if (timeExpired) return; 
     const questionId = key.split('_')[0];
     setIsIncorrectClicked(prev => ({ ...prev, [key]: true }));
     setDisabled(prev => ({ ...prev, [questionId]: true }));
@@ -60,46 +78,56 @@ const EasyCyberSecurity = () => {
       <p>You only get one chance to answer.</p>
       <br />
       <div>
+        <strong>Time left: {timeLeft} second{timeLeft !== 1 ? 's' : ''}</strong>
+      </div>
+      {timeExpired && <p style={{ color: 'red', fontWeight: 'bold' }}>Time's up! You can no longer answer questions.</p>}
+      <br />
+
+      <div>
         <h5>Question 1:</h5>
         <p>What is cybersecurity?</p>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1}>The protection of all things within the digital world, including, but not limited to, computers, smartphones and networks.</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1}>Protecting a service user's information.</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1}>The process of testing for weaknesses.</button>
-        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1}>Developing a new piece of software for use across the business.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a1')}`} onClick={() => handleCorrectClick('q1_a1')} disabled={disabled.q1 || timeExpired}>The protection of all things within the digital world, including, but not limited to, computers, smartphones and networks.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a2')}`} onClick={() => handleIncorrectClick('q1_a2')} disabled={disabled.q1 || timeExpired}>Protecting a service user's information.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a3')}`} onClick={() => handleIncorrectClick('q1_a3')} disabled={disabled.q1 || timeExpired}>The process of testing for weaknesses.</button>
+        <button className={`answer-button ${getButtonClass('q1', 'q1_a4')}`} onClick={() => handleIncorrectClick('q1_a4')} disabled={disabled.q1 || timeExpired}>Developing a new piece of software for use across the business.</button>
         {renderExplanation('q1')}
       </div>
+
       <div>
         <h5>Question 2:</h5>
         <p>Should you use the same password for everything?</p>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleIncorrectClick('q2_a1')} disabled={disabled.q2}>Yes.</button>
-        <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleCorrectClick('q2_a2')} disabled={disabled.q2}>No.</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a1')}`} onClick={() => handleIncorrectClick('q2_a1')} disabled={disabled.q2 || timeExpired}>Yes.</button>
+        <button className={`answer-button ${getButtonClass('q2', 'q2_a2')}`} onClick={() => handleCorrectClick('q2_a2')} disabled={disabled.q2 || timeExpired}>No.</button>
         {renderExplanation('q2')}
       </div>
+
       <div>
         <h5>Question 3:</h5>
         <p>Why shouldn't you download from untrusted sources?</p>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleCorrectClick('q3_a1')} disabled={disabled.q3}>The download may contain malware, including viruses or spyware.</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3}>Untrusted sources usually have faster downloads.</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3}>Because doing so may prevent a company, such as McAfee, from taking money for the same service.</button>
-        <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3}>There is no such thing as untrusted sources.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a1')}`} onClick={() => handleCorrectClick('q3_a1')} disabled={disabled.q3 || timeExpired}>The download may contain malware, including viruses or spyware.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a2')}`} onClick={() => handleIncorrectClick('q3_a2')} disabled={disabled.q3 || timeExpired}>Untrusted sources usually have faster downloads.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a3')}`} onClick={() => handleIncorrectClick('q3_a3')} disabled={disabled.q3 || timeExpired}>Because doing so may prevent a company, such as McAfee, from taking money for the same service.</button>
+        <button className={`answer-button ${getButtonClass('q3', 'q3_a4')}`} onClick={() => handleIncorrectClick('q3_a4')} disabled={disabled.q3 || timeExpired}>There is no such thing as untrusted sources.</button>
         {renderExplanation('q3')}
       </div>
+
       <div>
         <h5>Question 4:</h5>
         <p>In cyber security terms, what is a firewall?</p>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a1')}`} onClick={() => handleIncorrectClick('q4_a1')} disabled={disabled.q4}>A literal wall of fire.</button>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleCorrectClick('q4_a2')} disabled={disabled.q4}>A piece of software to regulate traffic on a network and/or system to aid in protecting against unauthorised access.</button>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4}>A software program that deletes viruses automatically.</button>
-        <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4}>A method of hunting for vulnerabilities and bugs.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a1')}`} onClick={() => handleIncorrectClick('q4_a1')} disabled={disabled.q4 || timeExpired}>A literal wall of fire.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a2')}`} onClick={() => handleCorrectClick('q4_a2')} disabled={disabled.q4 || timeExpired}>A piece of software to regulate traffic on a network and/or system to aid in protecting against unauthorised access.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a3')}`} onClick={() => handleIncorrectClick('q4_a3')} disabled={disabled.q4 || timeExpired}>A software program that deletes viruses automatically.</button>
+        <button className={`answer-button ${getButtonClass('q4', 'q4_a4')}`} onClick={() => handleIncorrectClick('q4_a4')} disabled={disabled.q4 || timeExpired}>A method of hunting for vulnerabilities and bugs.</button>
         {renderExplanation('q4')}
       </div>
+
       <div>
         <h5>Question 5:</h5>
         <p>What does VPN stand for?</p>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5}>Visual Public Nuisance</button>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5}>Virtual Portfolio Notification</button>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleCorrectClick('q5_a3')} disabled={disabled.q5}>Virtual Private Network</button>
-        <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5}>Virtual Public Network</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a1')}`} onClick={() => handleIncorrectClick('q5_a1')} disabled={disabled.q5 || timeExpired}>Visual Public Nuisance</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a2')}`} onClick={() => handleIncorrectClick('q5_a2')} disabled={disabled.q5 || timeExpired}>Virtual Portfolio Notification</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a3')}`} onClick={() => handleCorrectClick('q5_a3')} disabled={disabled.q5 || timeExpired}>Virtual Private Network</button>
+        <button className={`answer-button ${getButtonClass('q5', 'q5_a4')}`} onClick={() => handleIncorrectClick('q5_a4')} disabled={disabled.q5 || timeExpired}>Virtual Public Network</button>
         {renderExplanation('q5')}
       </div>
     </div>
